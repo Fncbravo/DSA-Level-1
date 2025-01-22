@@ -12,6 +12,7 @@ public class Pattern16 {
             int val = 1;
             for (int j = 1; j <= st; j++) {
                 System.out.print(val + "\t");
+                val++;
             }
 
             for (int j = 1; j <= sp; j++) {
@@ -20,10 +21,12 @@ public class Pattern16 {
 
             if (i == n) {
                 st--;
+                val--;
             }
 
             for (int j = 1; j <= st; j++) {
-                    System.out.print("*\t");
+                val--;
+                System.out.print(val + "\t");
             }
 
             st++;
