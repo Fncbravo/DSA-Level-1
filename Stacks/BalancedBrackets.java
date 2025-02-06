@@ -12,18 +12,43 @@ public class BalancedBrackets {
             if (ch == '(' || ch == '{' || ch == '[') {
                 st.push(ch);
             } else if (ch == ')') {
-                if(st.size() == 0){
-                    System.out.println(false);
-                    return;
-                } else if (st.peek() != '(') {
-                    System.out.println(false);
+              boolean val = handleClosing(st, '(');
+              if(val == false){
+                  System.out.println(val);
+                  return;
+              }
+            } else if (ch == '}') {
+                boolean val = handleClosing(st, '{');
+                if(val == false){
+                    System.out.println(val);
                     return;
                 }
-            } else if (ch == '}') {
-
             } else if (ch == ']') {
-                
+                boolean val = handleClosing(st, '[');
+                if(val == false){
+                    System.out.println(val);
+                    return;
+                }
+            } else {
+
             }
         }
+        if(st.size() == 0){
+            System.out.println(true);
+        } else {
+            System.out.println(false);
+        }
     }
+
+    public static boolean handleClosing(Stack<Character> st,char corresoch) {
+        if(st.size() == 0){
+            return false;
+        } else if (st.peek() != corresoch) {
+            return false;
+        } else {
+            st.pop();
+            return true;
+        }
+    }
+
 }
